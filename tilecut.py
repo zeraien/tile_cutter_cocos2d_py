@@ -42,7 +42,7 @@ def cut_it(input_filename, output_filename, tile_width, tile_height, suffix):
                 tile.save(tile_filename,"PNG")
                 
                 tiles.append({
-                    'filename':tile_filename,
+                    'filename':os.path.basename(tile_filename),
                     'rect':'{{%s,%s},{%s,%s}}' % (currentx,currenty,tile_width, tile_height)
                 })
                 
