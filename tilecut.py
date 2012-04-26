@@ -36,7 +36,6 @@ def cut_it(input_filename, output_filename, tile_width, tile_height, suffix):
         while currenty < image.size[1]:
             column = 0
             while currentx < image.size[0]:
-                print currentx,",",currenty
                 tile = image.crop((currentx,currenty,currentx + tile_width,currenty + tile_height))
                 
                 tile_filename = "%s_%s_%s%s.png" % (output_filename, row, column, suffix)
@@ -89,7 +88,7 @@ def make_plist(tile_dict):
     tile_bits = []
     for tile_data in tile_dict['tiles']:
         tile_bits.append(tile_bit % tile_data)
-    plist_structure = plist_structure % {'source_bit':source_bit, 'tile_bits':tile_bits}
+    plist_structure = plist_structure % {'source_bit':source_bit, 'tile_bits':''.join(tile_bits)}
     return plist_structure
     
 if __name__=="__main__":
