@@ -51,6 +51,6 @@ Will create the files you are looking for.
 
 Limitations
 ========================
-For now, all tiles must be identical in size (rigid), however height and width can be different, if need be.
+If your tiles all need to be the same size, the image has to accommodate for this, or you must choose your tile sizes accordingly.
 
 Feel free to fork and improve!

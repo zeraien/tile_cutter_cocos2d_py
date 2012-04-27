@@ -29,31 +29,35 @@ def cut_it(input_filename, output_filename, tile_width, tile_height, suffix):
         'tiles':tiles
     }
     
-    if image.size[0] % tile_width == 0 and image.size[1] % tile_height ==0 :
-        row = 0
+    row = 0
+    currentx = 0
+    currenty = 0
+    while currenty < image.size[1]:
+        column = 0
+        current_tile_height = tile_height
+        if image.size[1] - currenty < tile_height:
+            current_tile_height = image.size[1] - currenty
+        
+        while currentx < image.size[0]:
+            current_tile_width = tile_width
+            if image.size[0] - currentx < tile_width:
+                current_tile_width = image.size[0] - currentx
+            
+            tile = image.crop((currentx,currenty,currentx + tile_width,currenty + tile_height))
+            
+            tile_filename = "%s_%s_%s%s.png" % (output_filename, row, column, suffix)
+            tile.save(tile_filename,"PNG")
+            
+            tiles.append({
+                'filename':os.path.basename(tile_filename),
+                'rect':'{{%s,%s},{%s,%s}}' % (currentx,currenty,tile_width, tile_height)
+            })
+            
+            currentx += tile_width
+            column+=1
+        currenty += tile_height
         currentx = 0
-        currenty = 0
-        while currenty < image.size[1]:
-            column = 0
-            while currentx < image.size[0]:
-                tile = image.crop((currentx,currenty,currentx + tile_width,currenty + tile_height))
-                
-                tile_filename = "%s_%s_%s%s.png" % (output_filename, row, column, suffix)
-                tile.save(tile_filename,"PNG")
-                
-                tiles.append({
-                    'filename':os.path.basename(tile_filename),
-                    'rect':'{{%s,%s},{%s,%s}}' % (currentx,currenty,tile_width, tile_height)
-                })
-                
-                currentx += tile_width
-                column+=1
-            currenty += tile_height
-            currentx = 0
-            row+=1
-    else:
-        print "sorry your image does not fit neatly into",tile_width,"*",tile_height,"tiles"
-        sys.exit(1)
+        row+=1
         
     return tile_dict
     
