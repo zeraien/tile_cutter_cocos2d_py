@@ -42,7 +42,7 @@ Usage
                             tile height
 ### Example
     
-    ./tilecut.py -i ../originals/ship_panorama-hd.png -x 424 -y 320 -o ship_panorama -s "-hd"
+    ./tilecut.py -i ../originals/ship_panorama-hd.png -x 128 -y 128 -o ship_panorama -s "-hd"
     
 
 Will create the files you are looking for.
