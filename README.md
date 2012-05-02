@@ -2,7 +2,7 @@ Tile Cutter
 ======================
 
 Because I couldn't not get the famed https://github.com/jlamarche/Tile-Cutter and https://github.com/psineur/Tile-Cutter/network to work in Mac OS X 10.7, with PNG images,
-I googled around and found a simply python implementation.
+I googled around and found a simple python implementation.
 
 Improving upon it, and adding support for creation of cocos2d-esque plist files, here we are.
 
@@ -20,7 +20,7 @@ Dependencies
 Required python libraries: Python Image Library (aka Image, PIL).
 
 
-Idea and some code was found here:http://blog.odonnell.nu/posts/creating-tiles-image-python-and-pil/
+Idea and some code was found here: http://blog.odonnell.nu/posts/creating-tiles-image-python-and-pil/
 
 Usage
 =======================
@@ -42,7 +42,7 @@ Usage
                             tile height
 ### Example
     
-    ../tilecut.py -i ../originals/ship_panorama-hd.png -x 424 -y 320 -o ship_panorama -s "-hd"
+    ./tilecut.py -i ../originals/ship_panorama-hd.png -x 424 -y 320 -o ship_panorama -s "-hd"
     
 
 Will create the files you are looking for.
